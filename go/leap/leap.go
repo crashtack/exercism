@@ -7,6 +7,13 @@ package leap
 const testVersion = 3
 
 // It's good style to write a comment here documenting IsLeapYear.
-func IsLeapYear(int) bool {
+func IsLeapYear(year int) bool {
 	// Write some code here to pass the test suite.
+	if year % 400 == 0 {
+		return true
+	} else if year % 4 == 0 && year % 100 != 0 {
+		return true
+	}	else {
+		return false
+	}
 }
