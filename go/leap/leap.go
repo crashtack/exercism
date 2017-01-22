@@ -1,4 +1,5 @@
-// Leap stub file
+// Leap
+// A function to determine if a year is a leap year or not
 
 // The package name is expected by the test program.
 package leap
@@ -6,14 +7,13 @@ package leap
 // testVersion should match the targetTestVersion in the test file.
 const testVersion = 3
 
-// It's good style to write a comment here documenting IsLeapYear.
+// Returns true if the inputted year is a leap year
 func IsLeapYear(year int) bool {
-	// Write some code here to pass the test suite.
-	if year % 400 == 0 {
+	if year%400 == 0 {
 		return true
-	} else if year % 4 == 0 && year % 100 != 0 {
+	} else if year%4 == 0 && year%100 != 0 {
 		return true
-	}	else {
+	} else {
 		return false
 	}
 }
