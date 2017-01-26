@@ -1,30 +1,19 @@
 class Clock(object):
     """ A Clock class that ignores date """
 
-    def __init__(self, hours=None, minutes=None):
+    def __init__(self, hours=0, minutes=0):
         """ Initialize the Clock object """
-        if hours is None:
-            self.hours = 0
-        else:
-            self.hours = hours % 24
-
-        if minutes is None:
-            self.minutes = 0
-        else:
-            self.minutes = minutes
+        self.hours = hours % 24
+        self.minutes = minutes
 
         self.time_min = (self.hours * 60) + self.minutes
         self.time_min = self.time_min % 1440
 
-    def add(self, minute=None):
+    def add(self, minute=0):
         """ Add minutes to the time and check for overflow """
         self.time_min += minute
         self.time_min = self.time_min % 1440
-
-        return '{:02d}:{:02d}'.format(
-            int(self.time_min / 60) % 24,
-            self.time_min % 60
-        )
+        return self.__str__()
 
     def __eq__(self, other):
         """ Check if time_min is equal """
@@ -36,6 +25,10 @@ class Clock(object):
     def __ne__(self, other):
         """ Check if time_min is not equal """
         return not self.__eq__(other)
+
+    def __hash__(self):
+        """ Return a hash of the time value """
+        return hash(self.time_min)
 
     def __str__(self):
         """ Returns the hh:mm time format """

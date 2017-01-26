@@ -108,6 +108,9 @@ class ClockTest(unittest.TestCase):
     def test_subtract_more_than_two_days(self):
         self.assertEqual('00:20', str(Clock(2, 20).add(-3000)))
 
+    def test_add_nothing(self):
+        self.assertEqual('00:00', str(Clock(0, 0).add()))
+
     # Construct two separate clocks, set times, test if they are equal.
     def test_clocks_with_same_time(self):
         self.assertEqual(Clock(15, 37), Clock(15, 37))
