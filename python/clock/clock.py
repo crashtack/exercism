@@ -13,11 +13,7 @@ class Clock(object):
         """ Add minutes to the time and check for overflow """
         self.time_min += minute
         self.time_min = self.time_min % 1440
-
-        return '{:02d}:{:02d}'.format(
-            int(self.time_min / 60) % 24,
-            self.time_min % 60
-        )
+        return self.__str__()
 
     def __eq__(self, other):
         """ Check if time_min is equal """
@@ -29,6 +25,10 @@ class Clock(object):
     def __ne__(self, other):
         """ Check if time_min is not equal """
         return not self.__eq__(other)
+
+    def __hash__(self):
+        """ Return a hash of the time value """
+        return hash(self.time_min)
 
     def __str__(self):
         """ Returns the hh:mm time format """
